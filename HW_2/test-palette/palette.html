@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Цветовая палитра</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    .palette {
+      margin-bottom: 30px;
+    }
+    .color-box {
+      display: inline-block;
+      width: 100px;
+      height: 100px;
+      margin-right: 10px;
+      border-radius: 10px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.2);
+      line-height: 100px;
+      text-align: center;
+      color: white;
+      font-weight: bold;
+      text-shadow: 1px 1px 2px black;
+    }
+    h2 {
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Цветовая палитра для #3498db</h1>
+  <div class="palette" id="analogous">
+    <h2>Аналогичная</h2>
+  </div>
+  <div class="palette" id="complement">
+    <h2>Комплементарная</h2>
+  </div>
+  <div class="palette" id="monochromatic">
+    <h2>Монохромная</h2>
+  </div>
+
+  <script type="module">
+    import tinycolor from 'https://cdn.jsdelivr.net/npm/tinycolor2/+esm';
+
+    function generatePalette(colorInput, scheme = 'analogous') {
+      const color = tinycolor(colorInput);
+      if (!color.isValid()) throw new Error('Invalid color input');
+
+      switch (scheme) {
+        case 'analogous':
+          return color.analogous().map(c => c.toHexString());
+        case 'complement':
+          return [color.toHexString(), color.complement().toHexString()];
+        case 'monochromatic':
+          return color.monochromatic().map(c => c.toHexString());
+        default:
+          throw new Error('Unsupported palette scheme');
+      }
+    }
+
+    function renderPalette(id, colors) {
+      const container = document.getElementById(id);
+      colors.forEach(color => {
+        const div = document.createElement('div');
+        div.className = 'color-box';
+        div.style.backgroundColor = color;
+        div.textContent = color;
+        container.appendChild(div);
+      });
+    }
+
+    const baseColor = '#3498db';
+
+    renderPalette('analogous', generatePalette(baseColor, 'analogous'));
+    renderPalette('complement', generatePalette(baseColor, 'complement'));
+    renderPalette('monochromatic', generatePalette(baseColor, 'monochromatic'));
+  </script>
+</body>
+</html>

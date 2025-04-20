@@ -1,0 +1,15 @@
+{
+  "name": "random-color-palette",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["colors", "palette", "tinycolor2", "generator"],
+  "author": "Liya Rizvanova",
+  "license": "ISC",
+  "description": "Генератор цветовых палитр: аналогичные, комплементарные, монохромные",
+  "dependencies": {
+    "tinycolor2": "^1.6.0"
+  }
+}
