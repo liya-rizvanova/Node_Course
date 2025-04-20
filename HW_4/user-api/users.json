@@ -1,0 +1,12 @@
+[
+  { "id": "u1", "name": "Alice Johnson", "email": "alice.j@example.com" },
+  { "id": "u2", "name": "Bob Smith", "email": "bobsmith@gmail.com" },
+  { "id": "u3", "name": "Charlie Brown", "email": "charlie.b@example.com" },
+  { "id": "u4", "name": "Diana Prince", "email": "wonderdiana@amazon.com" },
+  { "id": "u5", "name": "Ethan Hunt", "email": "ethan@imf.org" },
+  { "id": "u6", "name": "Fiona Gallagher", "email": "fiona.g@example.com" },
+  { "id": "u7", "name": "George Bailey", "email": "gbailey@bank.com" },
+  { "id": "u8", "name": "Hannah Baker", "email": "hannah13@series.com" },
+  { "id": "u9", "name": "Ivan Petrov", "email": "ivan.petrov@mail.ru" },
+  { "id": "u10", "name": "Julia Roberts", "email": "julia.roberts@movies.com" }
+]
