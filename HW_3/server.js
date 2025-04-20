@@ -36,7 +36,7 @@ function saveViewsData() {
   fs.writeFileSync(viewsFilePath, JSON.stringify(viewsData, null, 2), 'utf-8');
 }
 
-// Обработчик для главной страницы
+// Упрощенный обработчик для главной страницы
 app.get('/', (req, res) => {
   const ip = req.socket.remoteAddress; // Получаем IP клиента
 
@@ -45,20 +45,10 @@ app.get('/', (req, res) => {
     saveViewsData();
   }
 
-  res.send(`
-    <!DOCTYPE html>
-    <html>
-      <head><title>Главная</title></head>
-      <body>
-        <h1>Главная</h1>
-        <p>Просмотров: ${viewsData['/']}</p>
-        <a href="/about">Перейти на "О нас"</a>
-      </body>
-    </html>
-  `);
+  res.send(`<h1>Главная</h1>`);
 });
 
-// Обработчик для страницы "О нас"
+// Упрощенный обработчик для страницы "О нас"
 app.get('/about', (req, res) => {
   const ip = req.socket.remoteAddress; // Получаем IP клиента
 
@@ -67,31 +57,12 @@ app.get('/about', (req, res) => {
     saveViewsData();
   }
 
-  res.send(`
-    <!DOCTYPE html>
-    <html>
-      <head><title>О нас</title></head>
-      <body>
-        <h1>О нас</h1>
-        <p>Просмотров: ${viewsData['/about']}</p>
-        <a href="/">Вернуться на главную</a>
-      </body>
-    </html>
-  `);
+  res.send(`<h1>О нас</h1>`);
 });
 
 // Обработчик для страницы "404"
 app.use((req, res) => {
-  res.status(404).send(`
-    <!DOCTYPE html>
-    <html>
-      <head><title>404</title></head>
-      <body>
-        <h1>404 - Страница не найдена</h1>
-        <a href="/">Вернуться на главную</a>
-      </body>
-    </html>
-  `);
+  res.status(404).send(`<h1>404 - Страница не найдена</h1>`);
 });
 
 // Запуск сервера
